@@ -153,6 +153,15 @@
   }
 }
 
+.card {
+  color: salmon;
+  border: 2px solid salmon;
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
@@ -181,4 +190,5 @@
     right: 0;
     border-right-color: var(--border);
   }
+  
 }

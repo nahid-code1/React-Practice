@@ -1,9 +1,9 @@
-
+import "./App.css"
 
 const Items = ({item}) => {
     console.log(item)
   return (
-    <div>
+    <div className="card">
         <p>Name: {item.name}</p>
         <p>Price: {item.price} </p>
     </div>
