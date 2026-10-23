@@ -1,7 +1,9 @@
 
+import { Suspense } from 'react';
 import './App.css'
 import { Counter } from './Counter';
 import Items from './Items'
+import { User } from './User';
 
 function App() {
 
@@ -15,9 +17,15 @@ function App() {
       const newNum = num + 5;
       alert(newNum);
     }
+
+    const users = fetch("https://jsonplaceholder.typicode.com/users")
+    .then(res => res.json());
+
   return (
     <>
-
+      <Suspense fallback={ <h3>Loading....</h3>} >
+          <User users = {users}></User>
+      </Suspense>
       <button onClick={() => handleClick(10)}>Click me</button>
       <button onClick={()=> alert("Another button has been clicked")}>Click this button</button>
 

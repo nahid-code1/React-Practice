@@ -1,7 +1,7 @@
 import "./App.css"
 
 const Items = ({item}) => {
-    console.log(item)
+
   return (
     <div className="card">
         <p>Name: {item.name}</p>
