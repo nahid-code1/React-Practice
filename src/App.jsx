@@ -4,6 +4,7 @@ import './App.css'
 import { Counter } from './Counter';
 import Items from './Items'
 import { User } from './User';
+import { Friends } from './Friends';
 
 function App() {
 
@@ -21,8 +22,20 @@ function App() {
     const users = fetch("https://jsonplaceholder.typicode.com/users")
     .then(res => res.json());
 
+
+    const fetchFriends = async()=>{
+      const res = await fetch("https://jsonplaceholder.typicode.com/users")
+      return res.json();
+    }
+    const friendsPromise = fetchFriends();
+
   return (
     <>
+      
+    <Suspense fallback={<h5>Friends are loading.....</h5>} >
+      <Friends friendsPromise = {friendsPromise} ></Friends>
+    </Suspense>
+
       <Suspense fallback={ <h3>Loading....</h3>} >
           <User users = {users}></User>
       </Suspense>
