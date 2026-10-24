@@ -5,8 +5,18 @@ import { Counter } from './Counter';
 import Items from './Items'
 import { User } from './User';
 import { Friends } from './Friends';
+import { Comments } from './Comments';
+
+
 
 function App() {
+
+  const fetchComments = async()=>{
+  const res = await fetch("https://jsonplaceholder.typicode.com/comments")
+  return res.json();
+}
+  const commentPromise = fetchComments();
+  
 
   const items = [
     {name: "Console", price: 45000},
@@ -31,7 +41,10 @@ function App() {
 
   return (
     <>
-      
+      <Suspense fallback={<h3>Comments are loading...</h3>}>
+        <Comments commentPromise={commentPromise}></Comments>
+      </Suspense>
+
     <Suspense fallback={<h5>Friends are loading.....</h5>} >
       <Friends friendsPromise = {friendsPromise} ></Friends>
     </Suspense>
